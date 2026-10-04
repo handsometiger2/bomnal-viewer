@@ -370,6 +370,7 @@ export default function App() {
         {isAdminOpen && (
           <AdminConsoleModal
             projects={projects}
+            initialProjectId={projects[currentProjectIndex]?.id}
             onClose={() => setIsAdminOpen(false)}
             onUpdateProjects={handleUpdateProjects}
           />
@@ -642,6 +643,7 @@ export default function App() {
       {isAdminOpen && (
         <AdminConsoleModal
           projects={projects}
+          initialProjectId={projects[currentProjectIndex]?.id}
           onClose={() => setIsAdminOpen(false)}
           onUpdateProjects={handleUpdateProjects}
         />
