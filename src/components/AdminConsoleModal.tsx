@@ -65,15 +65,19 @@ interface AdminConsoleModalProps {
   projects: ApartmentProject[];
   onClose: () => void;
   onUpdateProjects: (updated: ApartmentProject[]) => void;
+  initialProjectId?: string; // 콘솔 열 때 미리 선택할 아파트 (갤러리에서 보고 있던 것)
 }
 
 export const AdminConsoleModal: React.FC<AdminConsoleModalProps> = ({
   projects,
   onClose,
   onUpdateProjects,
+  initialProjectId,
 }) => {
   const [selectedProjectId, setSelectedProjectId] = useState<string>(
-    projects[0]?.id || ''
+    initialProjectId && projects.some((p) => p.id === initialProjectId)
+      ? initialProjectId
+      : projects[0]?.id || ''
   );
   const [activeTab, setActiveTab] = useState<'edit' | 'add'>('edit');
   const [isSaving, setIsSaving] = useState<boolean>(false);
